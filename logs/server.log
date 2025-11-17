@@ -1,19 +1,13 @@
 INFO:     Will watch for changes in these directories: ['/home/workspace']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [481] using StatReload
-INFO:     Started server process [483]
+INFO:     Started reloader process [529] using StatReload
+INFO:     Started server process [531]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     172.20.0.1:39608 - "HEAD / HTTP/1.1" 405 Method Not Allowed
-INFO:     172.20.0.1:39616 - "GET /accreditations HTTP/1.1" 200 OK
-INFO:     172.20.0.1:39628 - "GET /case-studies HTTP/1.1" 200 OK
-INFO:     172.20.0.1:39616 - "GET /accreditations HTTP/1.1" 200 OK
-INFO:     172.20.0.1:39628 - "GET /case-studies HTTP/1.1" 200 OK
-INFO:     172.20.0.1:39624 - "GET /resources HTTP/1.1" 200 OK
-INFO:     172.20.0.1:39624 - "GET /resources HTTP/1.1" 200 OK
-INFO:     172.20.0.1:48380 - "GET /accreditations HTTP/1.1" 200 OK
-INFO:     172.20.0.1:48382 - "GET /case-studies HTTP/1.1" 200 OK
-INFO:     172.20.0.1:48382 - "GET /accreditations HTTP/1.1" 200 OK
-INFO:     172.20.0.1:48380 - "GET /case-studies HTTP/1.1" 200 OK
-INFO:     172.20.0.1:48392 - "GET /resources HTTP/1.1" 200 OK
-INFO:     172.20.0.1:48392 - "GET /resources HTTP/1.1" 200 OK
+INFO:     172.20.0.1:34204 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:59814 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59830 - "GET /accreditations HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59814 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59830 - "GET /accreditations HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59842 - "GET /resources HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59842 - "GET /resources HTTP/1.1" 200 OK
