@@ -1,15 +1,25 @@
 INFO:     Will watch for changes in these directories: ['/home/workspace']
 INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
-INFO:     Started reloader process [268] using StatReload
-INFO:     Started server process [270]
+INFO:     Started reloader process [355] using StatReload
+INFO:     Started server process [357]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
-INFO:     172.20.0.1:59050 - "HEAD / HTTP/1.1" 405 Method Not Allowed
-INFO:     172.20.0.1:59054 - "GET /accreditations HTTP/1.1" 200 OK
-INFO:     172.20.0.1:59064 - "GET /case-studies HTTP/1.1" 200 OK
-INFO:     172.20.0.1:59054 - "GET /accreditations HTTP/1.1" 200 OK
-INFO:     172.20.0.1:59064 - "GET /case-studies HTTP/1.1" 200 OK
-INFO:     172.20.0.1:53504 - "GET /accreditations HTTP/1.1" 200 OK
-INFO:     172.20.0.1:53520 - "GET /case-studies HTTP/1.1" 200 OK
-INFO:     172.20.0.1:53504 - "GET /accreditations HTTP/1.1" 200 OK
-INFO:     172.20.0.1:53520 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60366 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     172.20.0.1:60368 - "GET /accreditations HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60376 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60368 - "GET /accreditations HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60376 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60380 - "GET /resources HTTP/1.1" 200 OK
+INFO:     172.20.0.1:60380 - "GET /resources HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41542 - "GET /accreditations HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41552 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41542 - "GET /accreditations HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41552 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41556 - "GET /resources HTTP/1.1" 200 OK
+INFO:     172.20.0.1:41556 - "GET /resources HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59884 - "GET /accreditations HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59894 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59870 - "GET /resources HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59884 - "GET /accreditations HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59894 - "GET /case-studies HTTP/1.1" 200 OK
+INFO:     172.20.0.1:59870 - "GET /resources HTTP/1.1" 200 OK

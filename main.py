@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 import logging
 import requests
 
-from schemas import Enquiry, CaseStudy
+from schemas import Enquiry, CaseStudy, ResourceArticle
 from database import create_document, get_documents, db
 
 app = FastAPI(title="L&D Backend API")
@@ -207,6 +207,84 @@ def get_accreditations():
             ).model_dump(),
         ]
     }
+
+
+# -------- Resources / Blog --------
+DEFAULT_RESOURCES: List[ResourceArticle] = [
+    ResourceArticle(
+        title="How to design an ILM/CMI-aligned leadership pathway",
+        slug="design-ilm-cmi-pathway",
+        summary="A step-by-step guide to mapping real work outcomes to recognised standards.",
+        content="""
+        Building an effective pathway starts with outcomes. Identify the moments that matter for your managers,
+        map capabilities, and align assessment to practical artefacts. Include coaching and spaced practice.
+        """.strip(),
+        tags=["Leadership", "ILM", "CMI"],
+        author="L&D Team",
+    ),
+    ResourceArticle(
+        title="A practical template for Training Needs Analysis (TNA)",
+        slug="tna-template",
+        summary="Use this lightweight approach to focus investment where it matters most.",
+        content="""
+        Start with business goals, define performance outcomes, and analyse the gap. Prioritise by value and feasibility,
+        then design interventions that blend formal learning with on-the-job application.
+        """.strip(),
+        tags=["TNA", "Strategy"],
+        author="L&D Team",
+    ),
+]
+
+
+@app.get("/resources")
+def list_resources(limit: Optional[int] = 50):
+    """List resource articles from DB; fall back to defaults if DB not configured."""
+    try:
+        # Try DB first
+        docs = get_documents("resourcearticle", {}, limit)
+        for d in docs:
+            if "_id" in d:
+                d["id"] = str(d.pop("_id"))
+            for k in ("created_at", "updated_at"):
+                if k in d and hasattr(d[k], "isoformat"):
+                    d[k] = d[k].isoformat()
+        return {"items": docs, "count": len(docs)}
+    except Exception:
+        # Fallback to defaults for demo
+        return {"items": [a.model_dump() for a in DEFAULT_RESOURCES], "count": len(DEFAULT_RESOURCES)}
+
+
+@app.post("/resources", status_code=201)
+def create_resource(article: ResourceArticle):
+    try:
+        new_id = create_document("resourcearticle", article)
+        return {"id": new_id, "status": "created"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/resources/{slug}")
+def get_resource(slug: str):
+    """Fetch a single resource by slug. Uses DB if available, otherwise defaults."""
+    try:
+        docs = get_documents("resourcearticle", {"slug": slug}, 1)
+        if not docs:
+            raise HTTPException(status_code=404, detail="Not found")
+        d = docs[0]
+        if "_id" in d:
+            d["id"] = str(d.pop("_id"))
+        for k in ("created_at", "updated_at"):
+            if k in d and hasattr(d[k], "isoformat"):
+                d[k] = d[k].isoformat()
+        return d
+    except HTTPException:
+        raise
+    except Exception:
+        # Fallback to defaults
+        for a in DEFAULT_RESOURCES:
+            if a.slug == slug:
+                return a.model_dump()
+        raise HTTPException(status_code=404, detail="Not found")
 
 
 if __name__ == "__main__":

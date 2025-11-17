@@ -11,6 +11,7 @@ Model name is converted to lowercase for the collection name:
 
 from pydantic import BaseModel, Field, EmailStr
 from typing import Optional, List, Dict
+from datetime import datetime
 
 # Existing example schemas (kept for reference)
 class User(BaseModel):
@@ -51,3 +52,12 @@ class CaseStudy(BaseModel):
     quote: Optional[str] = None
     quote_author: Optional[str] = None
     metrics: Optional[Dict[str, str]] = None
+
+class ResourceArticle(BaseModel):
+    title: str = Field(..., description="Article title")
+    slug: str = Field(..., description="URL-friendly identifier")
+    summary: str = Field(..., description="Short abstract for listing")
+    content: str = Field(..., description="Full article content (Markdown or HTML)")
+    tags: List[str] = Field(default_factory=list, description="Tags for filtering/search")
+    author: Optional[str] = Field(None, description="Author name")
+    published_at: Optional[datetime] = Field(None, description="Publish datetime")
